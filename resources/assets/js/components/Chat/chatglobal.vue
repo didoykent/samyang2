@@ -518,6 +518,10 @@ import { scroll } from "quasar-framework/dist/quasar.mat.esm.js";
 
          },
 
+	  '$route' (to, from) {
+      	console.log(to)
+    },
+
 
          currentUserAvatar(newval, oldval){
            var vm = this

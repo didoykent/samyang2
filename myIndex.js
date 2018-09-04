@@ -24,9 +24,10 @@ redisClient.subscribe('message');
 
 redisClient.on('message', function(channel, message){
 
-console.log(message);
+var addCharacters = "[" + message + "]"
 
-io.emit('write', {EVALUATION: JSON.parse(message)});
+console.log(JSON.parse(addCharacters))
+io.emit('write', {EVALUATION: JSON.parse(addCharacters)});
 
 
 });

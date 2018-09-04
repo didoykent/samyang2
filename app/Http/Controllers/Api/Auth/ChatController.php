@@ -768,11 +768,12 @@ public function write(Request $request){
 
   $validator = \Validator::make($request->all(),[
 
-      'tutorIdx' => 'required',
-      'ip' => 'required',
-      'title' => 'required',
-      'content' => 'required',
-      'studentIdx' => 'required'
+      's_id' => 'required',
+      'class_date' => 'required',
+      'class_time' => 'required',
+      'tutor_name' => 'required',
+      'epoch' => 'required',
+      'idx' => 'required'
 
     ]);
 
@@ -781,14 +782,14 @@ public function write(Request $request){
 
   $redis = \LRedis::connection();
 
-  $tutorName = Mega::where('idx', $request->tutorIdx)->get();
+  
   $writeData = [];
-  $writeData['tutorName'] = $tutorName->en_name;
-  $writeData['tutorIdx'] = $request->tutorIdx;
-  $writeData['ip'] = $request->ip;
-  $writeData['title'] = $request->title;
-  $writeData['content'] = $request->content;
-  $writeData['studentIdx'] = $request->studentIdx;
+  $writeData['s_id'] = $request->s_id;
+  $writeData['class_date'] = $request->class_date;
+  $writeData['class_time'] = $request->class_time;
+  $writeData['tutor_name'] = $request->tutor_name;
+  $writeData['epoch'] = $request->epoch;
+  $writeData['idx'] = $request->idx;
 
 	$encodedData = json_encode($writeData);
 
